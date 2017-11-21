@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-class Login extends Component {
-  render () {
+class Picture extends Component {
+  render() {
     return (
       <div>
         
@@ -10,4 +10,4 @@ class Login extends Component {
   }
 }
 
-export default Login
+export default Picture;
