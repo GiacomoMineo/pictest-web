@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Login from './Login'
+import Header from './Header'
 import ContestList from './ContestList'
 import ContestActions from './../actions/ContestActions'
 
@@ -32,9 +32,9 @@ class App extends Component {
 
 	render() {
 		return (
-			<div className="App">
-				<Login onLogin={this.onLogin} />
-				<ContestList contests={this.state.contests} user={this.state.user} />
+      <div>
+        <Header onLogin={this.onLogin} />
+				<ContestList contests={this.state.contests} user={this.state.user} token={this.state.token} />
 			</div>
 		)
 	}

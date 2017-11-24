@@ -20,12 +20,26 @@ class ContestListItem extends Component {
 		})
 	}
 
+	onVote = pictureId => {
+		PictureActions.vote(pictureId, this.props.token).then(voteResponse => {
+			console.log(voteResponse)
+		})
+	}
+
 	render() {
+		var userVoted = this.props.user
+			? this.props.contest.voters.includes(this.props.user.id)
+			: true
+
 		return (
 			<div>
 				{this.props.contest.topic}
 				<AddPicture contest={this.props.contest.id} />
-				<PictureList pictures={this.state.pictures} user={this.props.user} />
+				<PictureList
+					pictures={this.state.pictures}
+					userVoted={userVoted}
+					onVote={this.onVote}
+				/>
 			</div>
 		)
 	}
