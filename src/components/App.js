@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Grid from 'material-ui/Grid'
 import Header from './Header'
 import ContestList from './ContestList'
 import ContestActions from './../actions/ContestActions'
@@ -8,15 +9,15 @@ class App extends Component {
 		super(props)
 
 		this.state = {
-      token: null,
-      user: null,
+			token: null,
+			user: null,
 			contests: []
 		}
 	}
 
 	onLogin = (user, token) => {
 		this.setState({
-      user: user,
+			user: user,
 			token: token
 		})
 	}
@@ -32,10 +33,14 @@ class App extends Component {
 
 	render() {
 		return (
-      <div>
-        <Header onLogin={this.onLogin} />
-				<ContestList contests={this.state.contests} user={this.state.user} token={this.state.token} />
-			</div>
+			<Grid container>
+				<Header onLogin={this.onLogin} />
+				<ContestList
+					contests={this.state.contests}
+					user={this.state.user}
+					token={this.state.token}
+				/>
+			</Grid>
 		)
 	}
 }

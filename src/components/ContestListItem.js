@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import AddPicture from './AddPicture'
+import Grid from 'material-ui/Grid'
+import ContestHeader from './ContestHeader'
 import PictureList from './PictureList'
 import PictureActions from '../actions/PictureActions'
 
@@ -32,15 +33,14 @@ class ContestListItem extends Component {
 			: true
 
 		return (
-			<div>
-				{this.props.contest.topic}
-				<AddPicture contest={this.props.contest.id} />
+			<Grid container>
+				<ContestHeader contest={this.props.contest} />
 				<PictureList
 					pictures={this.state.pictures}
 					userVoted={userVoted}
 					onVote={this.onVote}
 				/>
-			</div>
+			</Grid>
 		)
 	}
 }

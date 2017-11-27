@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Grid from 'material-ui/Grid'
 import PictureListItem from './PictureListItem'
 
 class PictureList extends Component {
@@ -14,7 +15,11 @@ class PictureList extends Component {
 			)
 		})
 
-		return <ul>{pictures}</ul>
+		return (
+			<Grid item xs={12}>
+				<Grid container>{pictures}</Grid>
+			</Grid>
+		)
 	}
 }
 

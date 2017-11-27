@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Grid from 'material-ui/Grid'
 import Vote from './Vote'
 
 class PictureListItem extends Component {
@@ -20,7 +21,7 @@ class PictureListItem extends Component {
 
 	render() {
 		return (
-			<div>
+			<Grid item xs={4}>
 				{JSON.stringify(this.props.picture)}
 				<div>
 					<span>Votes: </span>
@@ -29,7 +30,7 @@ class PictureListItem extends Component {
 				{!this.props.userVoted && (
 					<Vote onVote={this.onVote} pictureId={this.props.picture.id} />
 				)}
-			</div>
+			</Grid>
 		)
 	}
 }
