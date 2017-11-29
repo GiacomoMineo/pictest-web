@@ -1,6 +1,22 @@
 @import "variables.scss";
 
+$panel-height: 120px;
+
 .picture-upload {
-  position: absolute;
-  top: $contest-header-height;
+	background-color: #fff;
+
+	.dropzone {
+		margin: 14px;
+		padding: 14px;
+
+		height: 120px;
+
+		border: 1px dashed #eaeaea;
+	}
+
+	.preview {
+		img {
+			max-height: 120px;
+		}
+	}
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Grid from 'material-ui/Grid'
+import { Button, Grid } from 'material-ui'
 import Dropzone from 'react-dropzone'
-import '../styles/pictureUpload.css'
+import '../styles/build/pictureUpload.css'
 
 class PictureUpload extends Component {
 	constructor(props) {
@@ -18,27 +18,40 @@ class PictureUpload extends Component {
 		})
 	}
 
-	handleConfirmPicture = () => {}
+	handleConfirmPicture = () => {
+    this.props.handleConfirmPicture(this.state.picture)
+  }
 
 	render() {
+    if (!this.props.hidden) {
+      return (null)
+    }
+
 		return (
 			<Grid container className="picture-upload">
-				<span>Picture panel</span>
-				<Dropzone
-					accept="image/jpeg, image/png"
-					multiple={false}
-					onDrop={this.handlePreviewPicture}
-				>
-					<p>Drag & Drop or click to upload</p>
-					<p>Only *.jpeg and *.png images will be accepted</p>
-				</Dropzone>
-				<div>
-					<img
-						src={this.state.picture ? this.state.picture.preview : null}
-						alt="preview"
-					/>
-				</div>
-				<button onClick={this.handleConfirmPicture}>Confirm button</button>
+				<Grid item xs={12}>
+					<span>Picture upload</span>
+					{this.state.picture ? (
+						<div className="preview">
+							<img
+								src={this.state.picture ? this.state.picture.preview : null}
+								alt="preview"
+							/>
+						</div>
+					) : (
+						<Dropzone
+							accept="image/jpeg, image/png"
+							multiple={false}
+							onDrop={this.handlePreviewPicture}
+							className="dropzone"
+						>
+							<p>Drag & Drop or click to upload</p>
+							<p>Only *.jpeg and *.png images will be accepted</p>
+						</Dropzone>
+					)}
+
+					<Button onClick={this.handleConfirmPicture}>Confirm</Button>
+				</Grid>
 			</Grid>
 		)
 	}

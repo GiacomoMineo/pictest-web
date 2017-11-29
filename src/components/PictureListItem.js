@@ -21,7 +21,7 @@ class PictureListItem extends Component {
 
 	render() {
 		return (
-			<Grid item xs={4}>
+			<Grid item lg={4} xs={12}>
 				{JSON.stringify(this.props.picture)}
 				<div>
 					<span>Votes: </span>

@@ -16,7 +16,6 @@ class Login extends Component {
 
 		AuthenticationActions.login(this.state.username, this.state.password).then(
 			loginResult => {
-        console.log(loginResult)
         if (loginResult.token)
           this.props.onLogin(loginResult.user, loginResult.token)
       }

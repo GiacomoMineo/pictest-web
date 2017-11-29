@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { Button, Grid } from 'material-ui'
 import PictureUpload from './PictureUpload'
-import '../styles/contestHeader.css'
+
+import PictureActions from '../actions/PictureActions'
+
+import '../styles/build/contestHeader.css'
 
 class ContestHeader extends Component {
 	constructor(props) {
@@ -18,9 +21,23 @@ class ContestHeader extends Component {
 		})
 	}
 
+	handleConfirmPicture = (pictureFile) => {
+		PictureActions.upload(pictureFile, this.props.contest.id).then(pictureUploadResponse => {
+      console.log(pictureUploadResponse)
+
+			this.setState({ showAddPicturePanel: false })
+		})
+	}
+
 	render() {
 		return (
-			<Grid item xs={12} className="contest-header">
+			<Grid
+				item
+				xs={12}
+				className={`contest-header${
+					this.state.showAddPicturePanel ? ' fixed' : ''
+				}`}
+			>
 				<Grid container alignItems={'center'}>
 					<Grid item xs={2}>
 						{!this.state.showAddPicturePanel ? (
@@ -32,7 +49,7 @@ class ContestHeader extends Component {
 						)}
 					</Grid>
 					<Grid item xs={8} className="contest-header-main">
-						<h2>Topic: {this.props.contest.topic}</h2>
+						<h2>Zti: {this.props.contest.topic}</h2>
 						<div>Ends in: </div>
 					</Grid>
 					<Grid item xs={2}>
@@ -40,9 +57,11 @@ class ContestHeader extends Component {
 						<img alt="author" src="" />
 					</Grid>
 				</Grid>
-				{this.state.showAddPicturePanel && (
-					<PictureUpload contest={this.props.contest.id} />
-				)}
+				<PictureUpload
+					contest={this.props.contest.id}
+					hidden={this.state.showAddPicturePanel}
+					handleConfirmPicture={this.handleConfirmPicture}
+				/>
 			</Grid>
 		)
 	}

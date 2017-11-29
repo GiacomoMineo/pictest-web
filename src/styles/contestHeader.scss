@@ -4,4 +4,12 @@
   position: relative;
   height: $contest-header-height;
   text-align: center;
+
+  background-color: #fff;
+
+  &.fixed {
+    position: fixed;
+
+    width: calc(100% - 12px);
+  }
 }

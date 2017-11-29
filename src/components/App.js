@@ -4,6 +4,8 @@ import Header from './Header'
 import ContestList from './ContestList'
 import ContestActions from './../actions/ContestActions'
 
+import '../styles/build/app.css'
+
 class App extends Component {
 	constructor(props) {
 		super(props)
@@ -16,6 +18,7 @@ class App extends Component {
 	}
 
 	onLogin = (user, token) => {
+    localStorage.setItem('token', token)
 		this.setState({
 			user: user,
 			token: token
@@ -33,7 +36,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<Grid container>
+			<Grid container className="container">
 				<Header onLogin={this.onLogin} />
 				<ContestList
 					contests={this.state.contests}

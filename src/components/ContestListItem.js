@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Grid from 'material-ui/Grid'
 import ContestHeader from './ContestHeader'
 import PictureList from './PictureList'
+
 import PictureActions from '../actions/PictureActions'
 
 class ContestListItem extends Component {
