@@ -1,3 +1,5 @@
+import Util from '../utils/Util'
+
 class AuthenticationActions {
 	static async login(username, password) {
 		var response = await fetch(
@@ -14,8 +16,17 @@ class AuthenticationActions {
       }
     )
     var json = await response.json()
+
+    if (json.token) {
+      Util.setJwt(json.token)
+    }
+
 		return json
-	}
+  }
+  
+  static isLogged() {
+    return (Util.getJwt())
+  }
 }
 
 export default AuthenticationActions
