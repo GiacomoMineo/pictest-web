@@ -8,7 +8,7 @@ class PictureUpload extends Component {
 		super(props)
 
 		this.state = {
-			picture: null
+      picture: null
 		}
 	}
 
@@ -50,7 +50,7 @@ class PictureUpload extends Component {
 						</Dropzone>
 					)}
 
-					<Button onClick={this.handleConfirmPicture}>Confirm</Button>
+					<Button disabled={!this.state.picture} onClick={this.handleConfirmPicture}>Confirm</Button>
 				</Grid>
 			</Grid>
 		)

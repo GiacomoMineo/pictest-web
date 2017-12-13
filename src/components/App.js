@@ -18,7 +18,6 @@ class App extends Component {
 	}
 
 	onLogin = (user, token) => {
-    localStorage.setItem('token', token)
 		this.setState({
 			user: user,
 			token: token

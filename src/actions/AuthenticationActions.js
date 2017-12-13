@@ -1,6 +1,6 @@
 import Util from '../utils/Util'
 
-class AuthenticationActions {
+export default class AuthenticationActions {
 	static async login(username, password) {
 		var response = await fetch(
       'http://localhost:58292/api/login',
@@ -15,6 +15,7 @@ class AuthenticationActions {
         })
       }
     )
+
     var json = await response.json()
 
     if (json.token) {
@@ -28,5 +29,3 @@ class AuthenticationActions {
     return (Util.getJwt())
   }
 }
-
-export default AuthenticationActions

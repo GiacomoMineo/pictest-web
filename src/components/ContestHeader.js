@@ -23,9 +23,9 @@ class ContestHeader extends Component {
 
 	handleConfirmPicture = (pictureFile) => {
 		PictureActions.upload(pictureFile, this.props.contest.id).then(pictureUploadResponse => {
-      console.log(pictureUploadResponse)
-
-			this.setState({ showAddPicturePanel: false })
+      if (pictureUploadResponse) {
+        this.setState({ showAddPicturePanel: false })
+      }
 		})
 	}
 

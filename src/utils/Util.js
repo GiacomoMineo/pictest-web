@@ -1,12 +1,10 @@
 const JWT_STORAGE_KEY = 'jwt'
 
-class Util {
-  setJwt (token) {
+export default class Util {
+  static setJwt (token) {
     localStorage.setItem(JWT_STORAGE_KEY, token)
   }
-  getJwt () {
-    localStorage.getItem(JWT_STORAGE_KEY)
+  static getJwt () {
+    return localStorage.getItem(JWT_STORAGE_KEY)
   }
 }
-
-export default Util
