@@ -1,10 +1,19 @@
-const JWT_STORAGE_KEY = 'jwt'
+const storageKeys = {
+  jwt: 'jwt',
+  user: 'user'
+}
 
 export default class Util {
-  static setJwt (token) {
-    localStorage.setItem(JWT_STORAGE_KEY, token)
+  static setJwt (jwt) {
+    localStorage.setItem(storageKeys.jwt, jwt)
   }
   static getJwt () {
-    return localStorage.getItem(JWT_STORAGE_KEY)
+    return localStorage.getItem(storageKeys.jwt)
+  }
+  static setUser (user) {
+    localStorage.setItem(storageKeys.user, JSON.stringify(user))
+  }
+  static getUser () {
+    return JSON.parse(localStorage.getItem(storageKeys.user))
   }
 }

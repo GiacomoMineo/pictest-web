@@ -16,16 +16,28 @@ export default class AuthenticationActions {
       }
     )
 
+    if (!response.ok) {
+      return false
+    }
+
     var json = await response.json()
 
     if (json.token) {
       Util.setJwt(json.token)
+      Util.setUser(json.user)
     }
 
 		return json
   }
   
   static isLogged() {
-    return (Util.getJwt())
+    return Util.getJwt() !== undefined && Util.getUser() !== undefined
+  }
+
+  static getLoggedIn() {
+    return {
+      jwt: Util.getJwt(),
+      user: Util.getUser()
+    }
   }
 }

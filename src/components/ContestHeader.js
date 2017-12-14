@@ -49,7 +49,7 @@ class ContestHeader extends Component {
 						)}
 					</Grid>
 					<Grid item xs={8} className="contest-header-main">
-						<h2>Zti: {this.props.contest.topic}</h2>
+						<h2>Placeholder: {this.props.contest.topic}</h2>
 						<div>Ends in: </div>
 					</Grid>
 					<Grid item xs={2}>

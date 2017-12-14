@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Button } from 'material-ui'
 
 class VotePicture extends Component {
   handleVote = () => {
@@ -8,10 +9,10 @@ class VotePicture extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.handleVote}>Vote!</button>
+        <Button raised color="primary" onClick={this.handleVote}>Vote!</Button>
       </div>
     );
   }
 }
 
-export default VotePicture;
+export default VotePicture

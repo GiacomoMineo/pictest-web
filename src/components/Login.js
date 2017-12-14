@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import { Button, TextField } from 'material-ui'
 import AuthenticationActions from '../actions/AuthenticationActions'
+import '../styles/build/login.css'
 
 class Login extends Component {
 	constructor(props) {
@@ -8,7 +10,7 @@ class Login extends Component {
 		this.state = {
 			username: '',
 			password: ''
-		}
+    }
 	}
 
 	handleLogin = event => {
@@ -30,23 +32,26 @@ class Login extends Component {
 
 	render() {
 		return (
-			<div>
-				<form onSubmit={this.handleLogin}>
-					<input
-						id='username'
-						type='text'
-						value={this.state.username}
-						onChange={this.handleChange.bind(this, 'username')}
-					/>
-					<input
-						id='password'
-						type='password'
-						value={this.state.password}
-						onChange={this.handleChange.bind(this, 'password')}
+      <div className="login-panel">
+        <form onSubmit={this.handleLogin}>
+          <TextField
+            label="Username"
+            placeholder="Username"
+            fullWidth
+            value={this.state.username}
+            onChange={this.handleChange.bind(this, 'username')}
           />
-          <button type='submit'>Submit</button>
-				</form>
-			</div>
+          <TextField
+            label="Password"
+            placeholder="Password"
+            fullWidth
+            type="password"
+            value={this.state.password}
+            onChange={this.handleChange.bind(this, 'password')}
+          />
+          <Button type='submit'>Submit</Button>
+        </form>
+      </div>
 		)
 	}
 }

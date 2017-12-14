@@ -8,7 +8,7 @@ class PictureList extends Component {
 			return (
 				<PictureListItem
 					key={picture.id}
-					picture={picture}
+          picture={picture}
 					userVoted={this.props.userVoted}
 					onVote={this.props.onVote}
 				/>

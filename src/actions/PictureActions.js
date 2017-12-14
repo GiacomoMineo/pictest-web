@@ -1,7 +1,8 @@
 import Util from '../utils/Util'
+import EventsService from '../services/eventsService'
 
 export default class PictureActions {
-  static async list(contestId, cursor) {
+  static async list (contestId, cursor) {
     var response = await fetch(
       'http://localhost:58292/api/picture?contest=' + contestId
     )
@@ -9,7 +10,7 @@ export default class PictureActions {
     return json
   }
 
-  static async vote(pictureId) {
+  static async vote (pictureId) {
     var token = Util.getJwt()
 
     var response = await fetch(
@@ -23,10 +24,14 @@ export default class PictureActions {
         })
       }
     )
+    if (response.status === 401) {
+      return EventsService.unauthorized()
+    }
+
     return response.ok
   }
 
-  static async upload(pictureItem, contestId) {
+  static async upload (pictureItem, contestId) {
     var token = Util.getJwt()
 
     var formData = new FormData()
@@ -41,6 +46,14 @@ export default class PictureActions {
         authorization: 'Bearer ' + token
       })
     })
+
+    if (!response.status.ok) {
+      if (response.status === 401) {
+        return EventsService.unauthorized()
+      }
+
+      return false
+    }
 
     var json = await response.json()
     return json

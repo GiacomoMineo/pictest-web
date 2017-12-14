@@ -10,7 +10,7 @@ class ContestList extends Component {
 					key={contest.id}
 					contest={contest}
 					user={this.props.user}
-					token={this.props.token}
+					jwt={this.props.jwt}
 				/>
 			)
 		})
