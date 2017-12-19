@@ -1,3 +1,18 @@
-.picture {
-  max-width: 100%;
+$overlay-offset: 8px;
+
+.picture-wrapper {
+  position: relative;
+  .picture {
+    max-width: 100%;
+  }
+  .votes-wrapper {
+    position: absolute;
+    bottom: $overlay-offset;
+    left: $overlay-offset;
+  }
+  .vote-button-wrapper {
+    position: absolute;
+    bottom: $overlay-offset;
+    right: $overlay-offset;
+  }
 }

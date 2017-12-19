@@ -8,7 +8,7 @@ class VotePicture extends Component {
 
   render() {
     return (
-      <div>
+      <div className="vote-button-wrapper">
         <Button raised color="primary" onClick={this.handleVote}>Vote!</Button>
       </div>
     );

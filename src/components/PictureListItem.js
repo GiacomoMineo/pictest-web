@@ -23,16 +23,16 @@ class PictureListItem extends Component {
 	render() {
 		return (
 			<Grid item lg={4} xs={12}>
-        <div>
+        <div className="picture-wrapper">
           <img alt={this.props.picture.caption} src={this.props.picture.url} className="picture" />
+          <div className="votes-wrapper">
+            <span>Votes: </span>
+            <span>{this.state.votes}</span>
+          </div>
+          {!this.props.userVoted && (
+            <Vote onVote={this.onVote} pictureId={this.props.picture.id} />
+          )}
         </div>
-				<div>
-					<span>Votes: </span>
-					<span>{this.state.votes}</span>
-				</div>
-				{!this.props.userVoted && (
-					<Vote onVote={this.onVote} pictureId={this.props.picture.id} />
-				)}
 			</Grid>
 		)
 	}
