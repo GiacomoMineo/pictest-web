@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Grid from 'material-ui/Grid'
 import Vote from './Vote'
+import '../styles/build/pictureListItem.css'
 
 class PictureListItem extends Component {
 	constructor(props) {
@@ -22,7 +23,9 @@ class PictureListItem extends Component {
 	render() {
 		return (
 			<Grid item lg={4} xs={12}>
-				{JSON.stringify(this.props.picture)}
+        <div>
+          <img alt={this.props.picture.caption} src={this.props.picture.url} className="picture" />
+        </div>
 				<div>
 					<span>Votes: </span>
 					<span>{this.state.votes}</span>
